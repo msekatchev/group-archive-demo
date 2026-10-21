@@ -1,0 +1,12 @@
+# SYNTHETIC DEMO DATA
+configuration,run,live_time_s,rate_cps
+no-crystal,1,300,25.7
+no-crystal,2,300,27.2
+no-crystal,3,300,23.5
+no-crystal,4,300,22.3
+no-crystal,5,300,24.0
+CsI-coupled,1,300,82.0
+CsI-coupled,2,300,76.0
+CsI-coupled,3,300,81.6
+CsI-coupled,4,300,79.2
+CsI-coupled,5,300,75.8

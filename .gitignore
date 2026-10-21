@@ -1,0 +1,15 @@
+# build output
+build/
+_site/
+.quartz/
+node_modules/
+
+# stand-in for group storage used by the demo generator (raw data never goes in git)
+tools/demo/_offrepo/
+
+# per-user Obsidian state
+vault/.obsidian/workspace*.json
+vault/.obsidian/plugins/obsidian-git/obsidian_askpass.sh
+vault/.trash/
+.DS_Store
+__pycache__/

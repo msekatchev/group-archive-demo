@@ -1,0 +1,17 @@
+filters:
+  or:
+    - type == "analysis"
+    - type == "memo"
+views:
+  - type: table
+    name: Analyses and memos
+    order:
+      - file.name
+      - type
+      - created
+      - authors
+      - status
+      - access
+    sort:
+      - property: created
+        direction: DESC

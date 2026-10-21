@@ -1,0 +1,17 @@
+filters:
+  or:
+    - type == "dataset"
+    - type == "publication"
+views:
+  - type: table
+    name: Datasets and publications
+    order:
+      - file.name
+      - type
+      - status
+      - doi
+      - license
+      - access
+    sort:
+      - property: created
+        direction: DESC

@@ -1,0 +1,29 @@
+filters:
+  and:
+    - type == "measurement"
+properties:
+  method:
+    displayName: Method
+  apparatus:
+    displayName: Apparatus
+  operator:
+    displayName: Operator
+  rod_angle_deg:
+    displayName: Rod angle (°)
+  access:
+    displayName: Access
+views:
+  - type: table
+    name: All measurements
+    order:
+      - file.name
+      - date
+      - method
+      - apparatus
+      - rod_angle_deg
+      - operator
+      - status
+      - access
+    sort:
+      - property: date
+        direction: DESC

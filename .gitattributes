@@ -1,0 +1,17 @@
+# Large binary formats go to Git LFS automatically (git lfs install once per machine).
+*.sldprt filter=lfs diff=lfs merge=lfs -text
+*.SLDPRT filter=lfs diff=lfs merge=lfs -text
+*.sldasm filter=lfs diff=lfs merge=lfs -text
+*.SLDASM filter=lfs diff=lfs merge=lfs -text
+*.slddrw filter=lfs diff=lfs merge=lfs -text
+*.SLDDRW filter=lfs diff=lfs merge=lfs -text
+*.cst    filter=lfs diff=lfs merge=lfs -text
+*.mph    filter=lfs diff=lfs merge=lfs -text
+*.aedt   filter=lfs diff=lfs merge=lfs -text
+*.h5     filter=lfs diff=lfs merge=lfs -text
+*.hdf5   filter=lfs diff=lfs merge=lfs -text
+*.npz    filter=lfs diff=lfs merge=lfs -text
+*.zip    filter=lfs diff=lfs merge=lfs -text
+
+# STL/STEP stay as normal files so GitHub can preview them in 3D
+*.stl binary

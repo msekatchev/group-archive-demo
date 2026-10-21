@@ -1,0 +1,4 @@
+# Changes to what "complete" means need the archive coordinator's review.
+/schema/                @msekatchev
+/vault/Archive\ Policy/ @msekatchev
+/tools/                 @msekatchev

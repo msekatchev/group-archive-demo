@@ -1,0 +1,69 @@
+# Required metadata for every record type in the archive.
+# tools/validate.py enforces this file on every push and pull request.
+# Change it by pull request so the group agrees on what "complete" means.
+
+access_levels: [internal, collaboration, public]   # most to least restricted
+default_access: internal                            # a note with no tag is never published
+
+common_required: [id, title, type, access, created, authors]
+
+# Fields shown only on the internal site, even when the record itself is shared
+# (paths on group storage mean nothing to outsiders and reveal internals).
+private_fields: [raw_data, storage_path, internal_notes]
+
+# Every file attached to a record must start with that record's ID.
+# Allowed characters: letters, digits, '-', '_', '.'; lowercase extension.
+file_name_pattern: '^{id}_[A-Za-z0-9][A-Za-z0-9_.-]*\.[a-z0-9]+$'
+
+types:
+  project:
+    id_pattern: '^PRJ-[A-Z0-9]+$'
+    required: [lead, status]
+  person:
+    id_pattern: '^PER-[a-z0-9-]+$'
+    required: [role, active]
+  apparatus:
+    id_pattern: '^[A-Z]{2,4}-\d{2}$'
+    required: [location, responsible, status]
+  procedure:
+    id_pattern: '^PROC-\d{3}$'
+    required: [version, applies_to]
+  cad-part:
+    id_pattern: '^CAD-[A-Z0-9]+-\d{3}$'
+    required: [assembly, revision, material, cad_tool, native_file, status]
+  simulation:
+    id_pattern: '^SIM-\d{4}-\d{3}$'
+    required: [project, apparatus, software, solver, cad_revision, files]
+  measurement:
+    id_pattern: '^(MEAS-\d{4}-\d{3}|LEGACY-\d{4}-\d{3})$'
+    required: [project, apparatus, method, date, operator, files, raw_data, status]
+    # Extra conditions required per measurement method. This is the answer to
+    # "we have bead-pulls but no idea what conditions they were taken under".
+    method_required:
+      bead-pull: [mode, rod_angle_deg, frequency_GHz, temperature_K, atmosphere,
+                  bead, bead_path, vna_power_dBm, vna_ifbw_Hz, procedure, cad_revision]
+      mode-map: [rod_angle_range_deg, rod_angle_step_deg, freq_range_GHz, temperature_K,
+                 atmosphere, vna_power_dBm, vna_ifbw_Hz, vna_points, procedure, cad_revision]
+      count-rate: [detector, source, live_time_s]
+      recovered: [provenance, recovered_by]
+  analysis:
+    id_pattern: '^ANA-\d{4}-\d{3}$'
+    required: [project, inputs, code, status]
+  memo:
+    id_pattern: '^TM-\d{4}-\d{3}$'
+    required: [project, status]
+  meeting:
+    id_pattern: '^MTG-\d{4}-\d{2}-\d{2}$'
+    required: [date, attendees]
+  publication:
+    id_pattern: '^PUB-\d{4}-\d{3}$'
+    required: [project, status, venue, datasets, data_availability]
+  dataset:
+    id_pattern: '^DATA-\d{4}-\d{3}$'
+    required: [project, records, license, doi, repository, funding]
+  policy:
+    id_pattern: '^POL-\d{3}$'
+    required: [version, owner]
+  index:
+    id_pattern: '^IDX-[a-z0-9-]+$'
+    required: []

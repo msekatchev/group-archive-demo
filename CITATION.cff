@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use data from this archive, cite the DATA- record's DOI."
+title: "Group Lab Archive (demonstration)"
+type: dataset
+authors:
+  - family-names: Sekatchev
+    given-names: Michael
+license: CC-BY-4.0
+repository-code: "https://github.com/msekatchev/group-archive-demo"
+url: "https://msekatchev.github.io/group-archive-demo/"
+keywords: [microwave cavity, bead-pull, mode map, data management, obsidian]

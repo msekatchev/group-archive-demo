@@ -1,0 +1,17 @@
+filters:
+  and:
+    - type == "simulation"
+views:
+  - type: table
+    name: All simulations
+    order:
+      - file.name
+      - created
+      - software
+      - solver
+      - cad_revision
+      - authors
+      - access
+    sort:
+      - property: created
+        direction: DESC

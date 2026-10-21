@@ -1,0 +1,17 @@
+filters:
+  and:
+    - type == "cad-part"
+views:
+  - type: table
+    name: All CAD parts
+    order:
+      - file.name
+      - assembly
+      - revision
+      - material
+      - cad_tool
+      - status
+      - access
+    sort:
+      - property: id
+        direction: ASC

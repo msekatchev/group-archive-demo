@@ -1,0 +1,15 @@
+filters:
+  and:
+    - type == "apparatus"
+views:
+  - type: table
+    name: Apparatus
+    order:
+      - file.name
+      - location
+      - responsible
+      - status
+      - access
+    sort:
+      - property: id
+        direction: ASC

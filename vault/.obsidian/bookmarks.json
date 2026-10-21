@@ -1,0 +1,7 @@
+{
+  "items": [
+    {"type": "file", "path": "index.md", "title": "Archive home"},
+    {"type": "file", "path": "Catalogs/Catalog.md", "title": "Catalog"},
+    {"type": "file", "path": "Archive Policy/POL-006 How to add a record.md", "title": "How to add a record"}
+  ]
+}

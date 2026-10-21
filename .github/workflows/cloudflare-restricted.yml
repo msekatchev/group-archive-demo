@@ -1,0 +1,41 @@
+name: Publish restricted sites (production)
+
+# Publishes the collaboration and internal sites to Cloudflare Pages, where
+# Cloudflare Access puts them behind "Sign in with GitHub" and only lets in
+# members of the matching GitHub team (setup steps in README.md).
+#
+# Dormant until the repository variable CLOUDFLARE_PAGES_PROJECT and the
+# secrets CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID are set.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    if: vars.CLOUDFLARE_PAGES_PROJECT != ''
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - tier: collaboration
+            dir: _site/collab
+          - tier: internal
+            dir: _site/internal
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: pip install pyyaml
+      - run: tools/build_site.sh
+        env:
+          TIERS: ${{ matrix.tier }}
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ${{ matrix.dir }} --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT }}-${{ matrix.tier }}
